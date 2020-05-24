@@ -1,0 +1,29 @@
+# npm
+npm-debug.log
+
+# Python
+*.pyc
+.python-version
+
+# gdb
+.gdb_history
+
+#
+# Linux
+#
+*~
+.directory
+
+#
+# Windows
+#
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+~$*.docx
+~$*.xlsx
+
+
+# yarn
+yarn-error.log
