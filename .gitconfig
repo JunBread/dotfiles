@@ -1,0 +1,11 @@
+[user]
+        name = Junhyun Kim
+        email = me@junbread.win
+        signingkey = 4A85A973BDCF6088
+[core]
+        excludesfile = ~/.gitexclude
+        autocrlf = input
+        precomposeunicode = yes
+[color]
+        ui = auto
+
