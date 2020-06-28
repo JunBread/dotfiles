@@ -16,16 +16,24 @@ set nu
 set laststatus=2
 " Always show tab bar
 set showtabline=2
-" Show Tab autocomplete
+" Show Tab autocomplete candidates
 set wmnu
+" Set indent width 4 spaces
 set shiftwidth=4
 set tabstop=4
-
+" Remove 4 spaces at once
+set smarttab
+" Set IME compatible
 set noimd
-
+" Show matched parenthesis
 set showmatch
-set sm
-
+" Highlight current line
+set cursorline
+" Enable mouse
+set mouse=a
+" Disable backup, swap
+set noswapfile
+set nobackup
 
 set nocompatible
 filetype off
@@ -42,11 +50,13 @@ Plugin 'mhinz/vim-signify'
 Plugin 'pangloss/vim-simplefold'
 Plugin 'vimwiki/vimwiki'
 Plugin 'mhinz/vim-startify'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
 
 " Custom Keymap
-nnoremap <C-B> :NERDTreeToggle<CR>
+let maplocalleader = "\\"
+command Q q
 
 " Color Scheme
 colorscheme molokai
@@ -54,10 +64,7 @@ if has("syntax")
 	syntax on
 endif
 
-" Vimwiki
-let wiki = {}
-let wiki.path = '/mnt/c/Users/junbread/Projects/personal/wiki/_wiki'
-let wiki.ext = '.md'
-
-let g:vimwiki_list = [wiki]
-let g:vimwiki_conceallevel = 0
+" Activate include files 
+for include_file in uniq(sort(globpath(&rtp, 'vim-include/*.vim', 0, 1)))
+	execute "source " . include_file
+endfor
