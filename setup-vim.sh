@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 
-vimd="~/.vim"
-vimrc="~/.vimrc"
+vimd=~/.vim
+vimrc=~/.vimrc
 
 # backup old .vimrc
 if [ -e $vimrc ]; then
