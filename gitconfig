@@ -1,12 +1,14 @@
 [user]
-        name = Junhyun Kim
-        email = me@junbread.win
-        signingkey = 4A85A973BDCF6088
+    name = Junhyun Kim
+    email = me@junbread.win
+    signingkey = 4A85A973BDCF6088
 [core]
-        excludesfile = ~/.gitexclude
-        autocrlf = input
-        precomposeunicode = yes
+    excludesfile = ~/.gitexclude
+    autocrlf = input
+    precomposeunicode = yes
+    editor = vim
+    pager = batcat
 [color]
-        ui = auto
+    ui = auto
 [include]
-	path = ~/.gitignore.local
+    path = ~/.gitignore.local
