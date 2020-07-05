@@ -99,3 +99,5 @@ function! RefreshTagbar()
          TagbarOpen
      endif
 endfunction
+
+let g:md_modify_disabled = 0
