@@ -59,7 +59,7 @@ let maplocalleader = "\\"
 command Q q
 
 " Color Scheme
-colorscheme molokai
+colorscheme monokai
 if has("syntax")
 	syntax on
 endif

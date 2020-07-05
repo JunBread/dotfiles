@@ -1,9 +1,9 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 vimd=~/.vim
 vimrc=~/.vimrc
 vundle=~/.vim/bundle/Vundle.vim
-molokai=~/.vim/colors/molokai.vim
+monokai=~/.vim/colors/monokai.vim
 
 # backup old .vimrc
 if [ -e $vimrc ]; then
@@ -18,9 +18,9 @@ if [ ! -e $vundle ]; then
 	git clone https://github.com/VundleVim/Vundle.vim.git $vundle
 fi
 
-# install molokai color scheme
-if [ ! -e $molokai ]; then
-wget -O $molokai https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+# install monokai color scheme
+if [ ! -e $monokai ]; then
+	wget -O $monokai https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim
 fi
 
 ln -sf $(pwd)/vimrc $vimrc
