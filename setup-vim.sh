@@ -11,6 +11,18 @@ viminclude_target=$vimd/vim-include
 
 if [[ "$1" == "--simple" ]]; then
 	viminclude_source=$(pwd)/vim-include/simple
+else
+	# setup wiki
+	echo 'Where is your wiki root? leave empty if you want to clone a repository from github.'
+	read -p ': ' wiki
+
+	wiki=`eval echo $wiki`
+	if [[ -d $wiki && -d $wiki/_wiki ]]; then
+		printf $wiki > ~/.wiki
+	else
+		git clone https://github.com/junbread/wiki ~/personal/wiki
+		printf '~/personal/wiki' > ~/.wiki
+	fi
 fi
 
 # backup old .vimrc

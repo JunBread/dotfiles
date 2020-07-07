@@ -41,6 +41,7 @@ filetype off
 " Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
@@ -48,9 +49,14 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'mhinz/vim-signify'
 Plugin 'pangloss/vim-simplefold'
-Plugin 'vimwiki/vimwiki'
 Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
+
+" Enable Vimwiki only if ~/.wiki file is exists
+if system("[[ -f ~/.wiki ]] && printf true") == "true"
+	Plugin 'vimwiki/vimwiki'
+endif
+
 call vundle#end()
 filetype plugin indent on
 

@@ -1,8 +1,8 @@
 " Default wiki 
 let wiki = {}
-let wiki.path = '/mnt/c/Users/junbread/Projects/personal/wiki/_wiki'
+let wiki.path = system("/bin/cat ~/.wiki") . "/_wiki"
 let wiki.ext = '.md'
-let wiki.diary_rel_path = '.'
+let wiki.diary_rel_path = "../_posts"
 
 let g:vimwiki_list = [wiki]
 let g:vimwiki_conceallevel = 0
