@@ -3,7 +3,7 @@
 bashrc=~/.bashrc
 
 # backup old .vimrc
-if [ -e $bashrc ]; then
+if [[ -f $bashrc && ! -L $bashrc ]]; then
 	mv $bashrc $bashrc.old
 fi
 
