@@ -1,10 +1,24 @@
 #!/usr/bin/env bash 
 
-bashrc=~/.bashrc
+bashrc_source=$(pwd)/bashrc
+bashrc_target=~/.bashrc
 
-# backup old .vimrc
-if [ -e $bashrc ]; then
-	mv $bashrc $bashrc.old
+if [[ $1 == '--simple' ]]; then
+	bashrc_source=$(pwd)/bashrc.simple
+else
+	# install utilities
+
+	# install bat
+	if [[ ! -f /usr/bin/bat && ! -f /usr/bin/batcat ]]; then
+		sudo apt install -y bat
+	fi
 fi
 
-ln -sf $(pwd)/bashrc $bashrc
+# backup old .vimrc
+if [[ -f $bashrc_target && ! -L $bashrc_target ]]; then
+	mv $bashrc_target $bashrc_target.old
+fi
+
+ln -sfn $bashrc_source $bashrc_target
+
+source ~/.bashrc
