@@ -54,7 +54,7 @@ Plugin 'majutsushi/tagbar'
 
 " Enable Vimwiki only if ~/.wiki file is exists
 if system("[[ -f ~/.wiki ]] && printf true") == "true"
-	Plugin 'vimwiki/vimwiki'
+    Plugin 'vimwiki/vimwiki'
 endif
 
 call vundle#end()
@@ -67,10 +67,10 @@ command Q q
 " Color Scheme
 colorscheme monokai
 if has("syntax")
-	syntax on
+    syntax on
 endif
 
 " Activate include files 
 for include_file in uniq(sort(globpath(&rtp, 'vim-include/*.vim', 0, 1)))
-	execute "source " . include_file
+    execute "source " . include_file
 endfor
