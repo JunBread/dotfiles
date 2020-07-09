@@ -1,0 +1,6 @@
+[user]
+    signingkey = 4A85A973BDCF6088
+[core]
+    pager = batcat
+[commit]
+    gpgsign = true

@@ -4,6 +4,7 @@ npm-debug.log
 # Python
 *.pyc
 .python-version
+__pycache__
 
 # gdb
 .gdb_history
