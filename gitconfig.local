@@ -2,5 +2,7 @@
     signingkey = 4A85A973BDCF6088
 [core]
     pager = batcat
+    autocrlf = input
+    editor = vim
 [commit]
     gpgsign = true

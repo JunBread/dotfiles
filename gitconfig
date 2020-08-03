@@ -3,10 +3,8 @@
     email = me@junbread.win
 [core]
     excludesfile = ~/.gitexclude
-    autocrlf = input
     precomposeunicode = yes
-    editor = vim
 [color]
     ui = auto
 [include]
-    path = ~/.gitignore.local
+    path = ~/.gitconfig.local
