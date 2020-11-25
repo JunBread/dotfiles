@@ -1,34 +1,38 @@
 #!/usr/bin/env bash 
 
-bashrc_source=$(pwd)/bashrc
-bashrc_target=~/.bashrc
-bashrc_local_source=$(pwd)/bashrc.local
-bashrc_local_target=~/.bashrc.local
+BASHRC_SOURCE=$(pwd)/bashrc
+BASHRC_TARGET=~/.bashrc
+BASHRC_LOCAL_SOURCE=$(pwd)/bashrc.local
+BASHRC_LOCAL_TARGET=~/.bashrc.local
 
-if [[ $1 != '--simple' ]]; then
+if [ $1 != "--simple" ]; then
     # copy initial local .bashrc
-    cp $bashrc_local_source $bashrc_local_target
+    cp $BASHRC_LOCAL_SOURCE $BASHRC_LOCAL_TARGET
 
     # install bat
-    if [[ ! -f /usr/bin/bat && ! -f /usr/bin/batcat ]]; then
+    if ! command -v bat &>/dev/null && ! command -v batcat &>/dev/null; then
+      if [ "$OSTYPE" == "linux"* ]; then
         sudo apt install -y bat
+      elif [ "$OSTYPE" == "darwin"* ]; then
+        brew install bat
+	  	fi
     fi
 
     # install nvm
-    export PROFILE=$bashrc_local_target
+    export PROFILE=$BASHRC_LOCAL_TARGET
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 fi
 
 # backup old bashrc
-if [[ -f $bashrc_target && ! -L $bashrc_target ]]; then
-    mv $bashrc_target $bashrc_target.old
+if [ -f $BASHRC_TARGET ] && [ ! -L $BASHRC_TARGET ]; then
+    mv $BASHRC_TARGET $BASHRC_TARGET.old
 fi
 
 # create local bashrc if not exists
-touch $bashrc_local_target
+touch $BASHRC_LOCAL_TARGET
 
 # symlink bashrc
-ln -sfn $bashrc_source $bashrc_target
+ln -sfn $BASHRC_SOURCE $BASHRC_TARGET
 
 # load bashrc
-source $bashrc_target
+source $BASHRC_TARGET
