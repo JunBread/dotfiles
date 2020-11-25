@@ -1,6 +1,6 @@
 " Default wiki 
 let wiki = {}
-let wiki.path = system("/bin/cat ~/.wiki") . "/_wiki"
+let wiki.path = system("/bin/cat ~/.wiki.conf") . "/_wiki"
 let wiki.ext = '.md'
 let wiki.diary_rel_path = "../_posts"
 

@@ -1,33 +1,32 @@
 #!/usr/bin/env bash
 
-vimd=~/.vim
-vundle=$vimd/bundle/Vundle.vim
-monokai=$vimd/colors/monokai.vim
+VIMD=~/.vim
+VUNDLE=$VIMD/bundle/Vundle.vim
 
-vimrc_source=$(pwd)/vimrc
-vimrc_target=~/.vimrc
-viminclude_source=$(pwd)/vim-include
-viminclude_target=$vimd/vim-include
+VIMRC_SOURCE=$(pwd)/vimrc
+VIMRC_TARGET=~/.vimrc
+VIMINCLUDE_SOURCE=$(pwd)/vim-include
+VIMINCLUDE_TARGET=$VIMD/vim-include
 
 if [[ "$1" == "--simple" ]]; then
-    viminclude_source=$(pwd)/vim-include/simple
+    VIMINCLUDE_SOURCE=$(pwd)/vim-include/simple
 else
     # setup wiki
     echo 'Where is your wiki root? leave empty if you want to clone a repository from github.'
     read -p ': ' wiki
 
-    wiki=`eval echo $wiki`
-    if [[ -d $wiki && -d $wiki/_wiki ]]; then
-        printf $wiki > ~/.wiki
+    WIKI=`eval echo $WIKI`
+    if [[ -d $WIKI && -d $WIKI/_wiki ]]; then
+        printf $WIKI > ~/.wiki.conf
     else
         git clone https://github.com/junbread/wiki ~/personal/wiki
-        printf '~/personal/wiki' > ~/.wiki
+        printf '~/personal/wiki' > ~/.wiki.conf
     fi
 fi
 
 # backup old .vimrc
-if [[ -f $vimrc_target && ! -L $vimrc_target ]]; then
-    mv $vimrc_target $vimrc_target.old
+if [[ -f $VIMRC_TARGET && ! -L $VIMRC_TARGET ]]; then
+    mv $VIMRC_TARGET $VIMRC_TARGET.old
 fi
 
 mkdir -p ~/.vim/include
@@ -35,16 +34,11 @@ mkdir -p ~/.vim/colors
 
 # install vundle.
 # note that it is directory
-if [[ ! -d $vundle ]]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git $vundle
+if [[ ! -d $VUNDLE ]]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE
 fi
 
-# install monokai color scheme
-if [[ ! -f $monokai ]]; then
-    wget -O $monokai https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim
-fi
-
-ln -sfn $vimrc_source $vimrc_target
-ln -sfn $viminclude_source $viminclude_target
+ln -sfn $VIMRC_SOURCE $VIMRC_TARGET
+ln -sfn $VIMINCLUDE_SOURCE $VIMINCLUDE_TARGET
 
 vim -c PluginInstall -c q -c q

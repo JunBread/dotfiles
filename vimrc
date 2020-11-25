@@ -51,6 +51,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'pangloss/vim-simplefold'
 Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
+Plugin 'dracula/vim'
 
 " Enable Vimwiki only if ~/.wiki file is exists
 if system("[[ -f ~/.wiki ]] && printf true") == "true"
@@ -65,7 +66,7 @@ let maplocalleader = "\\"
 command Q q
 
 " Color Scheme
-colorscheme monokai
+colorscheme dracula
 if has("syntax")
     syntax on
 endif
