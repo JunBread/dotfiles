@@ -51,10 +51,10 @@ Plugin 'mhinz/vim-signify'
 Plugin 'pangloss/vim-simplefold'
 Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
-Plugin 'dracula/vim'
+Plugin 'dracula/vim',{'name':'dracula'}
 
-" Enable Vimwiki only if ~/.wiki file is exists
-if system("[[ -f ~/.wiki ]] && printf true") == "true"
+" Enable Vimwiki only if ~/.wiki.conf file is exists
+if system("[[ -f ~/.wiki.conf ]] && printf true") == "true"
     Plugin 'vimwiki/vimwiki'
 endif
 
